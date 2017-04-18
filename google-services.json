@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "540719325630",
+    "firebase_url": "https://wait-management.firebaseio.com",
+    "project_id": "wait-management",
+    "storage_bucket": "wait-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540719325630:android:46d370dd070dbf8f",
+        "android_client_info": {
+          "package_name": "ensi.pcd.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540719325630-8i9kcjgl63b1nn1abgcjsp40ov7dhf05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtOzFr2P0psuPpH01blKguyzSbXWG34JI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

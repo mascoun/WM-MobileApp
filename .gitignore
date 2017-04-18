@@ -7,7 +7,6 @@
 *.tmp
 *.tmp.*
 log.txt
-*.apk
 *.sublime-project
 *.sublime-workspace
 .vscode/
