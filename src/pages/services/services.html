@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title>Golden Time</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+ 
+<ion-list>
+  <ion-item *ngFor="let service of services; let i = index" [attr.service]="service.id">
+    <ion-avatar item-left>
+      <img src="assets/img/{{service.id}}.png">
+    </ion-avatar>
+    <h2>{{service.name}}</h2>
+	<p>{{service.description}}</p>
+	<button ion-button color="light" [attr.disabled]="(exists(service.id) || disables[i])?true:null" (click)="reserve(service.id,$event,i);">Obtenir un e-ticket</button>
+  </ion-item>
+  
+  
+</ion-list>
+</ion-content>

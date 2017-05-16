@@ -1,20 +1,20 @@
 import { Component } from "@angular/core";  
-import { Platform } from 'ionic-angular';
-import { LoadingController, AlertController } from 'ionic-angular';
-import { ClientService } from '../../services/client';
+import { Platform , App, NavController, NavParams , LoadingController, AlertController } from 'ionic-angular';
+import { ClientService } from '../../providers/client';
+import { SignupPage } from '../signup/signup'
+import { TabsPage } from '../tabs/tabs'
 
 declare var FCMPlugin;	
 @Component({
     selector: 'page-home',
-    templateUrl: 'home.html',
-    providers: [ClientService]
+    templateUrl: 'home.html'
 })
 export class HomePage {  
 	public client;
 	public tokenId;
 	public loader;
-    constructor(public platform: Platform,private clientService: ClientService,public loadingCtrl: LoadingController,public alertCtrl: AlertController) {
-
+	
+    constructor(public platform: Platform, public navCtrl: NavController,public navParams: NavParams,public appCtrl: App,private clientService: ClientService,public loadingCtrl: LoadingController,public alertCtrl: AlertController) {
 	}
 	ngOnInit(): void {
 		this.platform.ready().then(() => {
@@ -30,17 +30,38 @@ export class HomePage {
 	showAlert() {
         let alert = this.alertCtrl.create({
             title: "Erreur!",
-            subTitle: "Oh mince ! Quelque chose s'est mal passé...\n",
+            subTitle: "Verifier votre connexion internet...\n",
             buttons: ["OK"]
         });
         alert.present();
     }
+	setupNotification() {
+		FCMPlugin.onNotification(
+			(data) => {
+				let alert = this.alertCtrl.create({
+					title: "Notification!",
+					subTitle: data,
+					buttons: ["OK"]
+				});
+				alert.present();
+			},
+			(e) => {
+				console.log(e);
+			}
+		)
+	}
     getClient() {
 		console.log("Getting Client Infos");
-        this.clientService.getClientFromToken(this.tokenId).subscribe(
+        this.clientService.getClientFromToken().subscribe(
             data => {
 				this.client = data.json();
-				console.log(this.client);
+				this.setupNotification();
+				if(Object.keys(this.client).length === 0) {
+					this.navCtrl.setRoot(SignupPage);
+				}else {
+					this.clientService.setClient(this.client);
+					this.navCtrl.setRoot(TabsPage);
+				}
             },
             err => {
 				this.loader.dismiss();
@@ -63,6 +84,7 @@ export class HomePage {
 				} else {
 					this.tokenId = token;
 					console.log("I got the token: " + this.tokenId);
+					self.clientService.setTokenId(token);
 					self.presentLoading();
 					self.getClient();
 				}

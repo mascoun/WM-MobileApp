@@ -1,0 +1,24 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title>Golden Time</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+ 
+<ion-list #list>
+
+  <ion-item *ngFor="let reservation of tickets; let i = index" [attr.eticket]="reservation.eTicket.id">
+    <ion-avatar item-left>
+      <img src="assets/img/{{reservation.service.id}}.png">
+    </ion-avatar>
+    <h2>E-ticket: {{reservation.service.name}}</h2>
+	<timer [inputTime]="reservation.eTicket.timeleft" ></timer>
+	<p>Numero de Ticket: {{reservation.eTicket.id}}</p>
+	<p>Rang: {{reservation.eTicket.rank}}</p>
+	<button ion-button color="danger" [disabled]="disables[i]" (click)="rendreETicket(reservation.eTicket.id,i,$event)">Rendre votre e-ticket</button>
+  </ion-item>
+ 
+</ion-list>
+
+</ion-content>

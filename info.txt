@@ -1,3 +1,9 @@
+Node version: v6.9.5
+
+Cordova version: 6.5.0
+
+Config.xml file: 
+
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="ensi.pcd.project" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Golden Time</name>
@@ -54,3 +60,23 @@
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-fcm" spec="~2.1.1" />
 </widget>
+
+
+Plugins: 
+
+cordova-plugin-console,cordova-plugin-device,cordova-plugin-fcm,cordova-plugin-splashscreen,cordova-plugin-statusbar,cordova-plugin-whitelist,ionic-plugin-keyboard
+
+Android platform:
+
+Available Android targets:
+----------
+id: 1 or "android-25"
+     Name: Android 7.1.1
+     Type: Platform
+     API level: 25
+     Revision: 3
+     Skins: HVGA, QVGA, WQVGA400, WQVGA432, WSVGA, WVGA800 (default), WVGA854, WXGA720, WXGA800, WXGA800-7in
+ Tag/ABIs : android-tv/x86, google_apis/arm64-v8a, google_apis/armeabi-v7a, google_apis/x86, google_apis/x86_64
+
+
+

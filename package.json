@@ -1,7 +1,6 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "Golden-Time",
+  "author": "ENSI",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -44,5 +43,5 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "WM MobileApp: An Ionic project"
+  "description": "Wait Management Mobile App."
 }
